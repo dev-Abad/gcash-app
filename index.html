@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        img {
+            max-width: 300px;
+            margin-top: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <h1>Welcome</h1>
+        <p>Click the button below to continue.</p>
+        <button onclick="goToPage2()">Continue</button>
+    </div>
+
+    <div class="container hidden" id="page2">
+        <h1>Transaction Successful</h1>
+        <p>Ref No: 1234567890</p>
+        <p>Date: <span id="transactionDate"></span></p>
+        <p>You have sent <strong>₱1000.00</strong> to <strong>Argielene Abad</strong>.</p>
+        <p>Click the button below to Download Receipt.</p>
+        <button onclick="goToPrank()">Download Receipt</button>
+    </div>
+
+    <div class="container hidden" id="prank">
+        <h1>Joke Lang AHAHAHA</h1>
+        <p>Namamasko po! 🎄</p>
+        <img src="/assets/image/gcash.jpg" alt="GCash QR Code">
+    </div>
+
+    <script>
+        function goToPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+            const transactionDate = new Date().toLocaleString();
+            document.getElementById('transactionDate').textContent = transactionDate;
+        }
+
+        function goToPrank() {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('prank').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
